@@ -15,7 +15,7 @@ class Daftar extends JI_Controller
       return false;
     }
 
-    $this->setTitle('Daftar '.$this->config->semevar->site_suffix);
+    $this->setTitle('Daftar '.$this->config_semevar('site_suffix', 'AppTanya'));
     $this->setDescription("Daftarkan diri anda untuk dapat bertanya atau menjawab ".$this->config->semevar->site_name);
     $this->setKeyword('Daftar');
 

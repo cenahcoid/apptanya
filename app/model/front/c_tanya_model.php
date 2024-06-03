@@ -1,5 +1,15 @@
 <?php
+// namespace Model\Front;
 
+// register_namespace(__NAMESPACE__);
+/**
+* Scoped `front` model for `c_tanya` table
+*
+* @version 1.1.0
+*
+* @package Model\Front
+* @since 1.0.0
+*/
 class C_Tanya_Model extends \JI_Model
 {
     public $tbl = 'c_tanya';

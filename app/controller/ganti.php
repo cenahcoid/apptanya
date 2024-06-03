@@ -15,7 +15,7 @@ class Ganti extends JI_Controller
       return false;
     }
 
-    $this->setTitle('Ganti '.$this->config->semevar->site_suffix);
+    $this->setTitle('Ganti '.$this->config_semevar('site_suffix', 'AppTanya'));
     $this->setDescription("Silakan login untuk bisa bertanya atau menjawab di ".$this->config->semevar->site_name);
     $this->setKeyword('Ganti');
 

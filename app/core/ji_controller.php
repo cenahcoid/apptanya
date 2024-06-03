@@ -71,6 +71,92 @@ class JI_Controller extends \SENE_Controller
       return $default_value;
     }
   }
+  public function __dateIndonesia($datetime, $utype = 'hari_tanggal')
+  {
+    $stt = strtotime($datetime);
+    $bulan_ke = date('n', $stt);
+    $bulan = 'Desember';
+    switch ($bulan_ke) {
+      case '1':
+          $bulan = 'Januari';
+          break;
+      case '2':
+          $bulan = 'Februari';
+          break;
+      case '3':
+          $bulan = 'Maret';
+          break;
+      case '4':
+          $bulan = 'April';
+          break;
+      case '5':
+          $bulan = 'Mei';
+          break;
+      case '6':
+          $bulan = 'Juni';
+          break;
+      case '7':
+          $bulan = 'Juli';
+          break;
+      case '8':
+          $bulan = 'Agustus';
+          break;
+      case '9':
+          $bulan = 'September';
+          break;
+      case '10':
+          $bulan = 'Oktober';
+          break;
+      case '11':
+          $bulan = 'November';
+          break;
+      default:
+          $bulan = 'Desember';
+    }
+    $hari_ke = date('N', $stt);
+    $hari = 'Minggu';
+    switch ($hari_ke) {
+      case '1':
+          $hari = 'Senin';
+          break;
+      case '2':
+          $hari = 'Selasa';
+          break;
+      case '3':
+          $hari = 'Rabu';
+          break;
+      case '4':
+          $hari = 'Kamis';
+          break;
+      case '5':
+          $hari = 'Jumat';
+          break;
+      case '6':
+          $hari = 'Sabtu';
+          break;
+      default:
+          $hari = 'Minggu';
+    }
+    $utype == strtolower($utype);
+    if ($utype == "hari") {
+      return $hari;
+    }
+    if ($utype == "jam") {
+      return date('H:i', $stt).' WIB';
+    }
+    if ($utype == "tanggal") {
+      return ''.date('d', $stt).' '.$bulan.' '.date('Y', $stt);
+    }
+    if ($utype == "tanggal_jam") {
+      return ''.date('d', $stt).' '.$bulan.' '.date('Y H:i', $stt).' WIB';
+    }
+    if ($utype == "hari_tanggal") {
+      return $hari.', '.date('d', $stt).' '.$bulan.' '.date('Y', $stt);
+    }
+    if ($utype == "hari_tanggal_jam") {
+      return $hari.', '.date('d', $stt).' '.$bulan.' '.date('Y H:i', $stt).' WIB';
+    }
+  }
 
   public function is_auto_login_after_register()
   {

@@ -15,7 +15,7 @@ class Login extends JI_Controller
       return false;
     }
 
-    $this->setTitle('Login '.$this->config->semevar->site_suffix);
+    $this->setTitle('Login '.$this->config_semevar('site_suffix', 'AppTanya'));
     $this->setDescription("Silakan login untuk bisa bertanya atau menjawab di ".$this->config->semevar->site_name);
     $this->setKeyword('Login');
 

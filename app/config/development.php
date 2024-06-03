@@ -117,7 +117,7 @@ $semevar['fcm']->appId = '';
 // example
 $semevar['site_name'] = 'Aplikasi Bertanya';
 $semevar['site_suffix'] = ' - Aplikasi Bertanya';
-$semevar['site_version'] = '1.0.0-dev';
+$semevar['site_version'] = '1.1.0-dev';
 $semevar['email_from'] = 'noreply@thecloudalert.com';
 $semevar['email_reply'] = 'hi@thecloudalert.com';
 $semevar['app_name'] = 'Aplikasi Bertanya';

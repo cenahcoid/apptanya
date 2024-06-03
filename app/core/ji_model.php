@@ -55,4 +55,9 @@ class JI_Model extends \SENE_Model
     $this->db->where("id", $id);
     return $this->db->delete($this->tbl);
   }
+  public function id($id)
+  {
+    $this->db->where("id", $id);
+    return $this->db->get_first();
+  }
 }

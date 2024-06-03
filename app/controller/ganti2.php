@@ -15,7 +15,7 @@ class Ganti2 extends JI_Controller
       die();
     }
 
-    $this->setTitle('Ganti2 '.$this->config->semevar->site_suffix);
+    $this->setTitle('Ganti2 '.$this->config_semevar('site_suffix', 'AppTanya'));
     $this->setDescription("Silakan login untuk bisa bertanya atau menjawab di ".$this->config->semevar->site_name);
     $this->setKeyword('Ganti2');
 

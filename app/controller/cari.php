@@ -21,7 +21,7 @@ class Cari extends JI_Controller{
 				$pagesize = 10;
 			}
 
-			$this->setTitle('Hasil pencarian "'.$keyword.'" '.$this->site_suffix);
+			$this->setTitle('Hasil pencarian "'.$keyword.'" '.$this->config_semevar('site_suffix', 'AppTanya'));
 			$this->setDescription('Hasil pencarian "'.$keyword.'" di '.$this->config->semevar->site_name);
 			$data['data'] = $this->ctm->getCari(0,10,'id','desc',$keyword);
 			$data['count'] = $this->ctm->countCari($keyword);
@@ -31,7 +31,7 @@ class Cari extends JI_Controller{
 			$this->putThemeContent("cari/hasil",$data);
 			$this->putJsContent("cari/hasil_bottom",$data);
 		}else{
-			$this->setTitle('Cari pertanyaan atau jawaban '.$this->site_suffix);
+			$this->setTitle('Cari pertanyaan atau jawaban '.$this->config_semevar('site_suffix', 'AppTanya'));
 			$this->setDescription('Cari pertanyaan atau jawaban di '.$this->config->semevar->site_name);
 			$this->putThemeContent("cari/home",$data);
 			$this->putJsContent("cari/home_bottom",$data);
