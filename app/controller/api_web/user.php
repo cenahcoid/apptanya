@@ -85,15 +85,19 @@ class User extends JI_Controller
     if($res){
       $this->status = 200;
       $this->message = 'Berhasil';
-      $user = $this->bum->getByEmail($di['email']);
 
-      //add to session
-      $sess = $d['sess'];
-      if(!is_object($sess)) $sess = new stdClass();
-      if(!isset($sess->user)) $sess->user = new stdClass();
-      $sess->user = $user;
+      //auto login if preferred
+      if ($this->is_auto_login_after_register()) {
+        $user = $this->bum->getByEmail($di['email']);
+        
+        //add to session
+        $sess = $d['sess'];
+        if(!is_object($sess)) $sess = new stdClass();
+        if(!isset($sess->user)) $sess->user = new stdClass();
+        $sess->user = $user;
 
-      $this->setKey($sess);
+        $this->setKey($sess);
+      }
     }else{
       $this->status = 900;
       $this->message = 'Gagal';

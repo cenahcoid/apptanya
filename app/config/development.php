@@ -16,7 +16,7 @@
  * Site Base URL with http:// or https:// prefix and trailing slash
  * @var string
  */
-$site = "http://".$_SERVER['HTTP_HOST']."/apptanya/";
+$site = "http://".$_SERVER['HTTP_HOST']."/drosanda/apptanya/";
 /**
  * URL parse method
  *   - REQUEST_URI, suitable for Nginx
@@ -122,3 +122,5 @@ $semevar['email_from'] = 'noreply@thecloudalert.com';
 $semevar['email_reply'] = 'hi@thecloudalert.com';
 $semevar['app_name'] = 'Aplikasi Bertanya';
 $semevar['app_logo'] = 'logo.png';
+
+$semevar['auto_login_after_register'] = false;

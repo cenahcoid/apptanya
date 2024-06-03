@@ -43,8 +43,8 @@ $cdn_url = '';
 /* @var array of string */
 /********************************/
 $db['host']  = '10.130.83.70';
-$db['user']  = 's3demo';
-$db['pass']  = 's3demo';
+$db['user']  = '';
+$db['pass']  = '';
 $db['name']  = 's3demo_apptanya';
 $db['port'] = '3306';
 $db['charset'] = 'utf8mb4';
@@ -55,7 +55,7 @@ $db['enckey'] = '';
 /* == Session Configuration == */
 /* @var string */
 /****************************/
-$saltkey = 'appTania21';
+$saltkey = 'appTania24';
 
 /********************************/
 /* == Timezone Configuration == */
@@ -122,3 +122,5 @@ $semevar['email_from'] = 'noreply@thecloudalert.com';
 $semevar['email_reply'] = 'hi@thecloudalert.com';
 $semevar['app_name'] = 'Aplikasi Bertanya';
 $semevar['app_logo'] = 'logo.png';
+
+$semevar['auto_login_after_register'] = false;

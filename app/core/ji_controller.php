@@ -2,7 +2,7 @@
 /**
 * Main controller: contains about methods and protperties that automtically included after extending in a class
 */
-class JI_Controller extends SENE_Controller
+class JI_Controller extends \SENE_Controller
 {
   public $status = 404;
   public $message = 'Notfound';
@@ -61,6 +61,20 @@ class JI_Controller extends SENE_Controller
     $data["data"]  = $dt;
     $this->sene_json->out($data);
     return true;
+  }
+  
+  public function config_semevar($key, $default_value = '')
+  {
+    if (isset($this->config->semevar->{$key})) {
+      return $this->config->semevar->{$key};
+    } else {
+      return $default_value;
+    }
+  }
+
+  public function is_auto_login_after_register()
+  {
+    return $this->config_semevar('auto_login_after_register', false);
   }
 
   /**

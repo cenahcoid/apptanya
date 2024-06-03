@@ -24,10 +24,17 @@ $("#fdaftar").on('submit', function(e){
   var fd = $(this).serialize();
   $.post(url,fd).done(function(dt){
     if(dt.status == 200){
-      gritter('<h4>Berhasil daftar</h4><p>Selamat Datang di <?=$this->config->semevar->site_name.' version '.$this->config->semevar->site_version?></p>','success');
-      setTimeout(function(){
-        window.location = '<?=base_url('profil')?>';
-      },1500)
+      if (<?=$this->is_auto_login_after_register() ? 'true' : 'false'?>) {
+        gritter('<h4>Berhasil daftar</h4><p>Selamat Datang di <?=$this->config->semevar->site_name.' version '.$this->config->semevar->site_version?></p>','success');
+        setTimeout(function(){
+          window.location = '<?=base_url('profil')?>';
+        },1500);
+      } else {
+        gritter('<h4>Berhasil daftar</h4><p>Silakan login dengan email dan password yang diisi pada saat daftar</p>', 'success');
+        setTimeout(function(){
+          window.location = '<?=base_url('profil')?>';
+        },1500);
+      }
     }else{
 			$('.btn-submit').prop('disabled',false);
 			$('.icon-submit').removeClass('fa-circle-o-notch');
