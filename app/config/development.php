@@ -55,7 +55,7 @@ $db['enckey'] = '';
 /* == Session Configuration == */
 /* @var string */
 /****************************/
-$saltkey = 'appTania21';
+$saltkey = 'appTania24';
 
 /********************************/
 /* == Timezone Configuration == */
@@ -72,7 +72,7 @@ $timezone = 'Asia/Jakarta';
 /****************************/
 $core_prefix = 'ji_';
 $core_controller = 'controller';
-$core_model = '';
+$core_model = 'model';
 
 /********************************/
 /* == Controller Configuration == */
