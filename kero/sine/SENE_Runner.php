@@ -1,19 +1,10 @@
 <?php
-/**
- * @author: Daeng Rosanda
- * @package SemeFramework
- * @since SemeFramework 3.2.0
- */
 
-/** Constants */
+/** HTML BR Tag Constants */
 if(!defined('HTML_BR')){
   define('HTML_BR', '<br />');
 }
 
-/**
-* Class Controller for runner
-* @var integer
-*/
 $website_view_id = 1; // default
 $admin_secret_url = 'mastermind';
 $base_url = '';
@@ -253,9 +244,16 @@ require_once "app/core/JI_Controller.php";
 require_once "app/controller/api_mobile/apikey.php";
 
 /**
-*
-* @codeCoverageIgnore
-*/
+ * Runner Class for integration test
+ *
+ * @author: Daeng Rosanda
+ * @version 3.2.0
+ *
+ * @package SemeFramework\Kero\Sine
+ * @since 3.2.0
+ *
+ * @codeCoverageIgnore
+ */
 class SENE_Runner
 {
   public $root = '';

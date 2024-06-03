@@ -1,29 +1,32 @@
 <?php
-/**
- * @author: Daeng Rosanda
- * @package SemeFramework
- * @since SemeFramework 3.0.0
- */
-
 /** CONSTANTS */
 if (!defined('TEM_ERR')) {
-  define('TEM_ERR', 'Error');
+    define('TEM_ERR', 'Error');
 }
 if (!defined('LBL_BASE_URL')) {
-  define('LBL_BASE_URL', '{{base_url}}');
+    define('LBL_BASE_URL', '{{base_url}}');
 }
 if (!defined('LBL_BASE_URL_ADMIN')) {
-  define('LBL_BASE_URL_ADMIN', '{{base_url_admin}}');
+    define('LBL_BASE_URL_ADMIN', '{{base_url_admin}}');
 }
 if (!defined('LBL_CDN_URL')) {
-  define('LBL_CDN_URL', '{{cdn_url}}');
+    define('LBL_CDN_URL', '{{cdn_url}}');
 }
 
 /**
  * Main Engine Class of seme framework
+ * Contains loader to another Seme Framework Classes
+ *
+ * @author Daeng Rosanda
+ *
+ * @version 4.03
+ *
+ * @package SemeFramework\Kero
+ * @since 3.0.0
  *
  * @codeCoverageIgnore
  */
+#[AllowDynamicProperties]
 class SENE_Engine
 {
     protected static $__instance;
@@ -74,7 +77,25 @@ class SENE_Engine
         $GLOBALS['SEMECFG'] = $this->config;
     }
 
+    /**
+     * Get namespace string from current loaded controller class file
+     *
+     * @return string namespace from current controller
+     */
+    private function namespace()
+    {
+        $namespace = '';
+        if (isset($_SESSION['namespace']) && strlen($_SESSION['namespace'])) {
+            $namespace = $_SESSION['namespace'];
+        }
+        return $namespace;
+    }
 
+    /**
+     * Get singleton instance
+     *
+     * @return object Current Seme Framework Engine object
+     */
     public static function getInstance()
     {
         return self::$_instance;
@@ -82,6 +103,8 @@ class SENE_Engine
 
     /**
      * Run the framework
+     *
+     * @return void
      */
     public function run()
     {
@@ -97,7 +120,7 @@ class SENE_Engine
                 }
             }
             if (strlen($this->config->core_model)) {
-                $core_model_file = $this->directories->app_core.$this->config->core_prefix.$this->core_model.'.php';
+                $core_model_file = $this->directories->app_core.$this->config->core_prefix.$this->config->core_model.'.php';
                 if (file_exists($core_model_file)) {
                     require_once($core_model_file);
                 } else {
@@ -114,6 +137,9 @@ class SENE_Engine
     {
         $cname = $this->default.'';
         require_once $this->directories->app_controller.$this->default.".php";
+        if (!class_exists($cname, false)) {
+            $cname = $this->namespace().'\\'.$cname;
+        }
         $cname = new $cname();
         $cname->index();
     }
@@ -125,6 +151,9 @@ class SENE_Engine
             require_once($newpath.$this->notfound.".php");
         } else {
             require_once($this->directories->app_controller.$this->notfound.".php");
+        }
+        if (!class_exists($cname, false)) {
+            $cname = $this->namespace().'\\'.$cname;
         }
         $cname = new $cname();
         $cname->index();
@@ -142,7 +171,7 @@ class SENE_Engine
             if (is_file($filename) && !empty($slug_parent)) {
                 require_once $filename;
                 $cname = basename($filename, ".php");
-                $cname = strtr($cname,'-', '_');
+                $cname = strtr($cname, '-', '_');
                 if (class_exists($cname)) {
                     $cname = new $cname();
                     $func = "slugParent";
@@ -181,8 +210,8 @@ class SENE_Engine
         $sene_method = $this->config->method;
         if (isset($_SERVER[$sene_method])) {
             $path = $_SERVER[$sene_method];
-            $path = strtr($path,'//', '/');
-            $path = explode('/', strtr($path,'//', '/'));
+            $path = strtr($path, '//', '/');
+            $path = explode('/', strtr($path, '//', '/'));
             $i=0;
             foreach ($path as $p) {
                 if (strlen($p)>0) {
@@ -198,7 +227,7 @@ class SENE_Engine
             if (!isset($path[1])) {
                 $path[1] = '';
             }
-            $path[1] = strtr($path[1],'-', '_');
+            $path[1] = strtr($path[1], '-', '_');
             if (!empty($path[1])) {
                 if ($path[1] == "admin" && $this->config->baseurl_admin !="admin") {
                     $newpath = realpath($this->directories->app_controller.$path[1]);
@@ -236,11 +265,17 @@ class SENE_Engine
                         if (is_file($filename)) {
                             require_once $filename;
                             $cname = basename($filename, ".php");
-                            $cname = strtr($cname,'-', '_');
+                            $cname = strtr($cname, '-', '_');
+
+                            if (!class_exists($cname, false)) {
+                                $cname = $this->namespace().'\\'.$cname;
+                            }
+
                             if (!class_exists($cname, false)) {
                                 trigger_error("Unable to load class: $cname. Please check classname on controller is exists in ".$this->directories->app_controller.$path[2].'/'.$path[3].".php", E_USER_ERROR);
                                 return;
                             }
+
                             $cname = new $cname();
                             $func = "index";
                             if (isset($path[4])) {
@@ -250,7 +285,7 @@ class SENE_Engine
                                     $func = $path[4];
                                 }
                             }
-                            $func = strtr($func,'-', '_');
+                            $func = strtr($func, '-', '_');
                             if (method_exists($cname, $func)) {
                                 $reflection = new ReflectionMethod($cname, $func);
                                 if (!$reflection->isPublic()) {
@@ -277,7 +312,12 @@ class SENE_Engine
                     } elseif (is_file($filename)) {
                         require_once $filename;
                         $cname = basename($filename, ".php");
-                        $cname = strtr($cname,'-', '_');
+                        $cname = strtr($cname, '-', '_');
+
+                        if (!class_exists($cname, false)) {
+                            $cname = $this->namespace().'\\'.$cname;
+                        }
+
                         if (!class_exists($cname, false)) {
                             trigger_error("Unable to load class: $cname. Please check classname on controller is exists in ".$this->directories->app_controller." triggered ", E_USER_ERROR);
                             return;
@@ -291,7 +331,7 @@ class SENE_Engine
                                 $func = $path[3];
                             }
                         }
-                        $func = strtr($func,'-', '_');
+                        $func = strtr($func, '-', '_');
                         if (method_exists($cname, $func)) {
                             $reflection = new ReflectionMethod($cname, $func);
                             if (!$reflection->isPublic()) {
@@ -320,7 +360,12 @@ class SENE_Engine
                     if (is_file($filename)) {
                         include $filename;
                         $cname = basename($filename, ".php");
-                        $cname = strtr($cname,'-', '_');
+                        $cname = strtr($cname, '-', '_');
+
+                        if (!class_exists($cname, false)) {
+                            $cname = $this->namespace().'\\'.$cname;
+                        }
+
                         if (class_exists($cname)) {
                             $cname = new $cname();
                             $func = "index";
@@ -331,7 +376,7 @@ class SENE_Engine
                                     $func = $path[2];
                                 }
                             }
-                            $func = strtr($func,'-', '_');
+                            $func = strtr($func, '-', '_');
                             if (method_exists($cname, $func)) {
                                 $reflection = new ReflectionMethod($cname, $func);
                                 if (!$reflection->isPublic()) {
