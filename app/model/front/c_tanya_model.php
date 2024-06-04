@@ -14,10 +14,15 @@ class C_Tanya_Model extends \JI_Model
 {
     public $tbl = 'c_tanya';
     public $tbl_as = 'ct';
+    public $tbl2 = 'b_user';
+    public $tbl2_as = 'bu';
 
     public function __construct()
     {
         parent::__construct();
+        $this->current_table('c_tanya');
+        $this->current_table_alias('ct');
+        $this->db->from($this->tbl, $this->tbl_as);
     }
     public function getAll()
     {
@@ -68,5 +73,14 @@ class C_Tanya_Model extends \JI_Model
             return $d->total;
         }
         return 0;
+    }
+
+    public function all()
+    {
+      $this->db->select_as("$this->tbl_as.rating, $this->tbl_as.jawaban_count, $this->tbl_as.tgl_tanya, $this->tbl_as.tanya, $this->tbl2_as.nama, $this->tbl2_as.display_picture, $this->tbl_as.id", 'id');
+      $this->db->from($this->tbl, $this->tbl_as);
+      $this->db->join($this->tbl2, $this->tbl2_as, 'id', $this->tbl_as, 'b_user_id_tanya', '');
+      $this->db->order_by("$this->tbl_as.tgl_tanya", 'desc');
+      return $this->db->get();
     }
 }

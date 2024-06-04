@@ -1,14 +1,14 @@
 <?php
-class Dashboard extends JI_Controller
+class Dashboard extends \JI_Controller
 {
   public function __construct()
   {
     parent::__construct();
     $this->setTheme('front');
-    $this->load('front/b_user_model',"bum");
+    $this->load('front/b_user_model', 'bum');
+    $this->load('front/c_tanya_model', 'ctm');
   }
   public function index()
-
   {
     $data = array();
     $data = $this->initialize_data();
@@ -17,6 +17,7 @@ class Dashboard extends JI_Controller
       redir(base_url('login'));
       return false;
     }
+    $data['pertanyaan'] = $this->ctm->all();
 
     $this->setTitle('Dashboard - '.$this->config->semevar->site_name);
     $this->setDescription("Halaman Dashboard ".$this->config->semevar->site_name);

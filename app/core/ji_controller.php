@@ -180,6 +180,48 @@ class JI_Controller extends \SENE_Controller
     return $display_picture_src;
   }
 
+  public function rating_to_html_stars($rating_value)
+  {
+    $html = '';
+    $rating_value = intval($rating_value);
+    if ($rating_value > 0) {
+      for($i=0; $i<5; $i++) {
+        $color = '';
+        if ($i < $rating_value) {
+          $color = 'gold';
+        } else {
+          $color = 'grey';
+        }
+        $html .= '<i class="fa fa-star" style="color: '.$color.';"></i>';
+      }
+    } else if ($rating_value < 0){
+      for($i=0; $i>-5; $i--) {
+        $color = '';
+        if ($rating_value < $i) {
+          $color = 'red';
+        } else {
+          $color = 'black';
+        }
+        $html .= '<i class="fa fa-star" style="color: '.$color.';"></i>';
+      }
+    } else {
+      $html = '<small>Belum ada voting</small>';
+    }
+
+    return $html;
+  }
+
+  public function rating_to_html($rating_value, $mode='positive')
+  {
+    if ($mode == 'positive' && $rating_value > 0) {
+      return number_format($rating_value, 0, ',', '.');
+    } else if ($mode != 'positive' && $rating_value < 0) {
+      return number_format(abs($rating_value), 0, ',', '.');
+    } else {
+      return '';
+    }
+  }
+
   /**
   * Abstract layer for bootstraping class or onboarding class
   *   this is *required*

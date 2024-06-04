@@ -36,4 +36,15 @@ class D_Jawab_Model extends \JI_Model
     $this->db->where('b_user_id_jawab', $b_user_id_jawab);
     return $this->db->get_first();
   }
+
+  public function count_jumlah_jawaban($c_tanya_id)
+  {
+    $this->db->select_as("count(1)", 'total');
+    $this->db->where('c_tanya_id', $c_tanya_id);
+    $d = $this->db->get_first();
+    if (isset($d->total)) {
+      return (int) $d->total;
+    }
+    return 0;
+  }
 }

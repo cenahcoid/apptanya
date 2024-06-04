@@ -16,7 +16,7 @@
  * Site Base URL with http:// or https:// prefix and trailing slash
  * @var string
  */
-$site = "http://".$_SERVER['HTTP_HOST']."/";
+$site = "http://".$_SERVER['HTTP_HOST']."/drosanda/apptanya/";
 /**
  * URL parse method
  *   - REQUEST_URI, suitable for Nginx
@@ -24,7 +24,7 @@ $site = "http://".$_SERVER['HTTP_HOST']."/";
  *   - ORIG_PATH_INFO
  * @var string
  */
-$method = "REQUEST_URI";//REQUEST_URI,PATH_INFO,ORIG_PATH_INFO,
+$method = "PATH_INFO";//REQUEST_URI,PATH_INFO,ORIG_PATH_INFO,
 /**
  * Admin Secret re-routing
  * this is alias for app/controller/admin/*

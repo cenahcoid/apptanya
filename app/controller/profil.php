@@ -1,4 +1,15 @@
 <?php
+// namespace Controller;
+// register_namespace(__NAMESPACE__);
+
+/**
+* Main Controller Class for rendering main page (onboarding)
+*
+* @version 1.0.0
+*
+* @package Controller
+* @since 1.0.0
+*/
 class Profil extends JI_Controller
 {
   public function __construct()
