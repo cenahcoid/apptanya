@@ -96,16 +96,16 @@ class Pertanyaan extends \JI_Controller
 
     $is_already_vote = $this->check_already_vote($data, $id);
     if ($is_already_vote) {
-      redir(base_url('tanyajawab/detail/'.$id.'?alreadyvote'));
+      redir(base_url('tanyajawab/detail/'.$id.'/?alreadyvote'));
       return false;
     }
     
     $res = $this->voting_save($data, $id, 1);
     if ($res) {
       $this->calculate_rating($id);
-      redir(base_url('tanyajawab/detail/'.$id.'?success'));
+      redir(base_url('tanyajawab/detail/'.$id.'/?success'));
     } else {
-      redir(base_url('tanyajawab/detail/'.$id.'?failed'));
+      redir(base_url('tanyajawab/detail/'.$id.'/?failed'));
     }
   }
 
@@ -119,16 +119,16 @@ class Pertanyaan extends \JI_Controller
 
     $is_already_vote = $this->check_already_vote($data, $id);
     if ($is_already_vote) {
-      redir(base_url('tanyajawab/detail/'.$id.'?alreadyvote'));
+      redir(base_url('tanyajawab/detail/'.$id.'/?alreadyvote'));
       return false;
     }
     
     $res = $this->voting_save($data, $id, -1);
     if ($res) {
       $this->calculate_rating($id);
-      redir(base_url('tanyajawab/detail/'.$id.'?dislike&success'));
+      redir(base_url('tanyajawab/detail/'.$id.'/?dislike&success'));
     } else {
-      redir(base_url('tanyajawab/detail/'.$id.'?dislike&failed'));
+      redir(base_url('tanyajawab/detail/'.$id.'/?dislike&failed'));
     }
   }
 
@@ -142,16 +142,16 @@ class Pertanyaan extends \JI_Controller
 
     $is_already_vote = $this->check_already_vote($data, $id);
     if (!$is_already_vote) {
-      redir(base_url('tanyajawab/detail/'.$id.'?alreadyvote'));
+      redir(base_url('tanyajawab/detail/'.$id.'/?alreadyvote'));
       return false;
     }
     
     $res = $this->voting_delete();
     if ($res) {
       $this->calculate_rating($id);
-      redir(base_url('tanyajawab/detail/'.$id.'?dislike&success'));
+      redir(base_url('tanyajawab/detail/'.$id.'/?dislike&success'));
     } else {
-      redir(base_url('tanyajawab/detail/'.$id.'?dislike&failed'));
+      redir(base_url('tanyajawab/detail/'.$id.'/?dislike&failed'));
     }
   }
 }
