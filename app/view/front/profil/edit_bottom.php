@@ -31,7 +31,7 @@ $('#fganti2').on('submit',function(e){
           $('.icon-submit').removeClass('fa-spin');
           NProgress.done();
 
-          window.location = '<?=base_url('ganti2/')?>';
+          window.location = '<?=base_url('profil')?>';
         },5678)
       }else{
         gritter('<h4>Gagal</h4><p>['+dt.status+'] '+dt.message+'</p>','danger');

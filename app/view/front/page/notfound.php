@@ -6,7 +6,6 @@
 <?php $this->getThemeElement("page/html/head",$__forward); ?>
 <?php $this->getBodyBefore(); ?>
 <body class="">
-  <?php $this->getThemeElement("page/html/menu_left",$__forward);?>
   <?php $this->getThemeElement("page/html/header",$__forward);?>
 
   <div class="main-content">
@@ -15,7 +14,7 @@
       <div class="column">
         <div class="content">
           <h1 class="text-center">Error 404</h1>
-          <p>Halaman yang anda cari tidak ditemukan</p>
+          <p>Halaman yang anda tuju tidak ditemukan</p>
           <br>
           <div class="form-group form-action">
             <a href="<?=base_url()?>" class="btn btn-default"><i class="fa fa-chevron-left"></i> Kembali </a>

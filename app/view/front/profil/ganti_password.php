@@ -16,8 +16,8 @@
           <input id="iverifikasi_password_baru" type="password" class="form-control" placeholder="verifikasi password baru" required />
         </div>
         <div class="form-group form-action">
-          <button type="submit" class="btn btn-primary btn-submit">Konfirmasi <i class="icon-submit fa fa-sign-in"></i></button>
-          <a href="<?=base_url("lupa")?>" class="btn btn-danger">Batal <i class="fa fa-times" aria-hidden="true"></i></a>
+          <button type="submit" class="btn btn-primary btn-submit">Simpan perubahan <i class="icon-submit fa fa-save"></i></button>
+          <a href="<?=base_url("profil")?>" class="btn btn-danger">Batal <i class="fa fa-times" aria-hidden="true"></i></a>
         </div>
       </form>
     </div>

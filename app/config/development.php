@@ -16,7 +16,7 @@
  * Site Base URL with http:// or https:// prefix and trailing slash
  * @var string
  */
-$site = "http://".$_SERVER['HTTP_HOST']."/drosanda/apptanya/";
+$site = "http://".$_SERVER['HTTP_HOST']."/";
 /**
  * URL parse method
  *   - REQUEST_URI, suitable for Nginx
@@ -24,7 +24,7 @@ $site = "http://".$_SERVER['HTTP_HOST']."/drosanda/apptanya/";
  *   - ORIG_PATH_INFO
  * @var string
  */
-$method = "PATH_INFO";//REQUEST_URI,PATH_INFO,ORIG_PATH_INFO,
+$method = "REQUEST_URI";//REQUEST_URI,PATH_INFO,ORIG_PATH_INFO,
 /**
  * Admin Secret re-routing
  * this is alias for app/controller/admin/*
@@ -44,7 +44,7 @@ $cdn_url = '';
 /********************************/
 $db['host']  = 'localhost';
 $db['user']  = 'root';
-$db['pass']  = '';
+$db['pass']  = '12345678';
 $db['name']  = 'apptanya_db';
 $db['port'] = '3306';
 $db['charset'] = 'utf8mb4';

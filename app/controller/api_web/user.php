@@ -240,7 +240,7 @@ class User extends JI_Controller
     $res = $this->bum->update($id, $du);
     if($res){
       $this->status = 200;
-      $this->message = 'Berhasil';
+      $this->message = 'Perubahan profil berhasil disimpan';
 
       //add to session
       $d['sess']->user->nama = $nama;

@@ -1,7 +1,7 @@
 <div class="section">
   <div class="column">
     <div class="content">
-      <h1 class="text-center">Ganti Nama</h1>
+      <h1 class="text-center">Edit Profil</h1>
       <form id="fganti2" method="post" class="form-horizontal">
         <div class="form-group">
           <label for="inama" class="control-label">Nama *</label>
