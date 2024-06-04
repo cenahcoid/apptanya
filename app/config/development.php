@@ -44,7 +44,7 @@ $cdn_url = '';
 /********************************/
 $db['host']  = 'localhost';
 $db['user']  = 'root';
-$db['pass']  = '12345678';
+$db['pass']  = '';
 $db['name']  = 'apptanya_db';
 $db['port'] = '3306';
 $db['charset'] = 'utf8mb4';
@@ -122,5 +122,7 @@ $semevar['email_from'] = 'noreply@thecloudalert.com';
 $semevar['email_reply'] = 'hi@thecloudalert.com';
 $semevar['app_name'] = 'Aplikasi Bertanya';
 $semevar['app_logo'] = 'logo.png';
+
+$semevar['media_user'] = 'media/user';
 
 $semevar['auto_login_after_register'] = false;

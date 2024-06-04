@@ -26,6 +26,7 @@ class D_Jawab_Model extends \JI_Model
   public function c_tanya_id($c_tanya_id)
   {
     $this->db->select_as("$this->tbl_as.*, $this->tbl2_as.nama", 'nama');
+    $this->db->select_as("$this->tbl2_as.display_picture", 'display_picture');
     $this->db->join($this->tbl2, $this->tbl2_as, 'id', $this->tbl_as, 'b_user_id_jawab');
     $this->db->where_as('c_tanya_id', $c_tanya_id);
     $this->db->order_by('rating', 'desc');

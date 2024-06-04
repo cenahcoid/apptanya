@@ -18,7 +18,7 @@ class Tanya extends JI_Controller
     $this->__json_out($data);
   }
   public function baru(){
-    $s = $this->__init();
+    $s = $this->initialize_data();
     $data = array();
     $data['id'] = 0;
 

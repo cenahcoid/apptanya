@@ -12,7 +12,7 @@ class TanyaJawab extends \JI_Controller
     }
     public function index()
     {
-        $data = $this->__init();
+        $data = $this->initialize_data();
 
         if(!$this->user_login) {
             redir(base_url('login'));
@@ -28,7 +28,7 @@ class TanyaJawab extends \JI_Controller
     }
     public function detail($id)
     {
-        $data = $this->__init();
+        $data = $this->initialize_data();
 
         if(!$this->user_login) {
             redir(base_url('login'));

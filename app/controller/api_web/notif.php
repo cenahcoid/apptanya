@@ -16,7 +16,7 @@ class Notif extends JI_Controller
     $this->__json_out($data);
   }
   public function count(){
-    $s = $this->__init();
+    $s = $this->initialize_data();
     $data = 0;
 
     if(!$this->user_login){

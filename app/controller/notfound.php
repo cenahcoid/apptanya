@@ -16,7 +16,7 @@ class NotFound extends \JI_Controller
     public function index()
     {
         header("HTTP/1.0 404 Not Found");
-        $data = $this->__init();
+        $data = $this->initialize_data();
         $this->setTitle('Error 404: Not Found '. $this->config_semevar('site_title_suffix', ''));
         $this->loadLayout("notfound",$data);
         $this->render();

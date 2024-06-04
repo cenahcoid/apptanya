@@ -47,7 +47,7 @@ class Lupa extends JI_Controller
   public function index()
   {
     $data = array();
-    $data = $this->__init();
+    $data = $this->initialize_data();
     $this->setTitle('Lupa - '.$this->config->semevar->site_name);
     $this->setDescription("Halaman Lupa ".$this->config->semevar->site_name);
     $this->setKeyword('lupa');
@@ -61,7 +61,7 @@ class Lupa extends JI_Controller
   public function proses(){
     //init
     $data = array();
-    $dt = $this->__init();
+    $dt = $this->initialize_data();
     if($this->user_login){
       $this->status = 401;
       $this->message = 'Sudah Login';

@@ -4,7 +4,7 @@
     <div class="content">
       <div class="media">
         <a href="#" class="pull-left">
-          <img src="https://skin.cenah.co.id/img/placeholders/avatars/avatar13.jpg" alt="Avatar" class="img-circle">
+          <img src="<?=$this->display_picture_src($data->penanya->display_picture, 'https://skin.cenah.co.id/img/placeholders/avatars/avatar3.jpg')?>" alt="Foto profil <?=$data->penanya->nama?>" class="img-circle"  style="width: 64px; height: 64px;">
         </a>
         <div class="media-body">
           <p class="push-bit">
@@ -22,7 +22,7 @@
               <?php foreach ($data->jawabans as $k => $v): ?>
                 <li class="media">
                   <a href="#" class="pull-left">
-                    <img src="https://skin.cenah.co.id/img/placeholders/avatars/avatar2.jpg" alt="Avatar" class="img-circle">
+                    <img src="<?=$this->display_picture_src($v->display_picture, 'https://skin.cenah.co.id/img/placeholders/avatars/avatar4.jpg')?>" alt="Foto profil <?=$v->nama?>" class="img-circle" style="width: 64px; height: 64px;">
                   </a>
                   <div class="media-body">
                     <a href="#"><strong><?=$v->nama?></strong></a>

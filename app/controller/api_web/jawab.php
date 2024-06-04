@@ -23,7 +23,7 @@ class Jawab extends \JI_Controller
     }
     public function pertanyaan($id)
     {
-        $session = $this->__init();
+        $session = $this->initialize_data();
         $data = array();
 
         if(!$this->user_login) {

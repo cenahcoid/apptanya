@@ -11,7 +11,7 @@ class Profil extends JI_Controller
 
   {
     $data = array();
-    $data = $this->__init();
+    $data = $this->initialize_data();
 
     if(!$this->user_login){
       redir(base_url('login'));
@@ -31,7 +31,7 @@ class Profil extends JI_Controller
   public function edit()
   {
     $data = array();
-    $data = $this->__init();
+    $data = $this->initialize_data();
 
     if(!$this->user_login){
       redir(base_url('login'));
@@ -50,7 +50,7 @@ class Profil extends JI_Controller
 
   public function ganti_password()
   {
-    $data = $this->__init();
+    $data = $this->initialize_data();
 
     if(!$this->user_login){
       redir(base_url('login'));

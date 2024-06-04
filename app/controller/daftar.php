@@ -8,7 +8,7 @@ class Daftar extends JI_Controller
   }
   public function index()
   {
-    $data = $this->__init();
+    $data = $this->initialize_data();
 
     if($this->user_login){
       redir(base_url('profil'));

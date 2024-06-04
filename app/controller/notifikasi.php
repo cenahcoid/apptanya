@@ -10,7 +10,7 @@ class Notifikasi extends JI_Controller
   public function index()
   {
     $data = array();
-    $data = $this->__init();
+    $data = $this->initialize_data();
 
     if(!$this->user_login){
       redir(base_url('login'));
@@ -32,7 +32,7 @@ class Notifikasi extends JI_Controller
   public function baca($id)
   {
     $data = array();
-    $data = $this->__init();
+    $data = $this->initialize_data();
 
     if(!$this->user_login){
       redir(base_url('login'));

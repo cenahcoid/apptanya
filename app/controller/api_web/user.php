@@ -23,7 +23,7 @@ class User extends JI_Controller
   }
   public function index()
   {
-    $d = $this->__init();
+    $d = $this->initialize_data();
     $data = array();
     if(!$this->user_login){
       $this->status = 400;
@@ -38,7 +38,7 @@ class User extends JI_Controller
     $this->__json_out($data);
   }
   public function daftar(){
-    $d = $this->__init();
+    $d = $this->initialize_data();
     $data = array();
 
     if($this->user_login){
@@ -106,7 +106,7 @@ class User extends JI_Controller
   }
 
   public function login(){
-    $d = $this->__init();
+    $d = $this->initialize_data();
 
     $data = array();
     if($this->user_login){
@@ -181,7 +181,7 @@ class User extends JI_Controller
   }
 
   public function edit(){
-    $d = $this->__init();
+    $d = $this->initialize_data();
     $data = array();
 
     if(!$this->user_login){
@@ -262,7 +262,7 @@ class User extends JI_Controller
   }
 
   public function logout(){
-    $data = $this->__init();
+    $data = $this->initialize_data();
     if(isset($data['sess']->user->id)){
       $user = $data['sess']->user;
       //$this->seme_chat->set_offline($user->id);
@@ -282,7 +282,7 @@ class User extends JI_Controller
   * @return [type] [description]
   */
   public function bp(){
-    $data = $this->__init();
+    $data = $this->initialize_data();
     if(isset($data['sess']->user->id)){
       $data['sess']->user->is_confirmed = 1;
       $this->setKey($data['sess']);
@@ -294,7 +294,7 @@ class User extends JI_Controller
 
   public function password_ganti()
   {
-    $d = $this->__init();
+    $d = $this->initialize_data();
     $data = array();
     if (!$this->user_login) {
       $this->status = 400;

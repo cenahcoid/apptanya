@@ -7,7 +7,7 @@ class Cari extends JI_Controller{
 		$this->load('front/c_tanya_model','ctm');
 	}
 	public function index(){
-		$data = $this->__init();
+		$data = $this->initialize_data();
 		$keyword = strip_tags(trim($this->input->get('keyword')));
 
 		if(strlen($keyword)>1){
